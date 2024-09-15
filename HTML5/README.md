@@ -748,3 +748,642 @@ HTML标准结构如下：
 
 
 ## 9. 列表
+
+### 1. 有序列表
+
+概念：有顺序或侧重顺序的列表。
+
+```html
+<h1>把大象放冰箱一共需要几步？</h1>
+    <ol>
+        <li>把冰箱门打开</li>
+        <li>把大象放进去</li>
+        <li>把冰箱门关上</li>
+    </ol>
+```
+
+### 2. 无序列表
+
+概念：无顺序或不侧重顺序的列表。
+
+```html
+<h1>城市列表</h1>
+    <ul>
+        <li>成都</li>
+        <li>上海</li>
+        <li>西安</li>
+        <li>武汉</li>
+    </ul>
+```
+
+### 3. 列表嵌套
+
+概念：列表中的某项内容，又包含一个列表（注意：嵌套时，请务必把解构写完整）。
+
+```html
+<h1>城市列表</h1>
+    <ul>
+        <li>成都</li>
+        <li>
+            <span>上海</span>
+            <ul>
+                <li>外滩</li>
+                <li>浦东</li>
+            </ul>
+        <li>西安</li>
+        <li>武汉</li>
+    </ul>
+```
+> **注意：li 标签最好写在 ul 或 ol 中，不要单独使用。**
+
+### 4. 自定义列表
+
+1. 概念：所谓自定义列表，就是一个包含 术语名称 以及 术语描述 的列表。
+2. 一个dl就是一个自定义列表，一个dt就是一个术语名称，一个dd就是术语描述（可以有多个）。
+
+```html
+ <h1>如何更好的学习</h1>
+ 		<dl>
+        <dt>做好笔记</dt>
+        <dd>笔记可以帮助你后续的学习</dd>
+        <dd>可以有多个术语描述测试</dd>
+        <dt>多多练习</dt>
+        <dd>只有自己敲出来的代码才是自己的</dd>
+        <dt>别怕出问题</dt>
+        <dd>改正并记住，就是经验</dd>
+    </dl>
+```
+## 10. 表格
+
+### 1. 基本结构
+
+1. 一个完整的表格由： **表格标题 、 表格头部 、 表格主体 、 表格脚注** ，四部分组成。
+
+2. 表格涉及到的标签：
+
+   * **table：**表格
+   * **caption ：**表格标题
+   * **thead ：**表格头部
+   * **tbody：**表格主体
+   * **tfoot：**表格注脚
+   * **tr：**每一行
+   * **th、td：**每一个单元格（备注：表格头部中用th，表格主体、表格脚注中用：td）
+
+   以下为标签的图示：
+
+   ![](https://i-blog.csdnimg.cn/blog_migrate/be60ba8b7df86128ff915a5b4a6f89c7.jpeg)
+
+   ![](https://i-blog.csdnimg.cn/blog_migrate/fb67b6f073ad9bb530261fc3f8415265.jpeg)
+
+   ![](https://i-blog.csdnimg.cn/blog_migrate/93fdea321c57f343065e91877ba5036b.jpeg)
+
+   
+
+3. 具体编码：
+
+   ```html
+   <table border="1" width="500" height="500" cellspacing="0">
+           <!-- cellspacing 为 0 边框的举例为 0 并不是合并边框 -->
+           <!-- 表格标题 -->
+           <caption>学生信息</caption>
+           <!-- 表格头部 -->
+           <thead height="50" align="center" valign="middle">
+               <tr>
+                   <th width="50" height="50" align="right" valign="bottom">姓名</th>
+                   <th>性别</th>
+                   <th>年龄</th>
+                   <th>名族</th>
+                   <th>政治面貌</th>
+               </tr>
+           </thead>
+           <!-- 表格主体 -->
+           <tbody height="520" align="center" valign="middle">
+               <tr height="50" align="left" valign="top">
+                   <td>张三</td>
+                   <td>男</td>
+                   <td>18</td>
+                   <td>汉族</td>
+                   <td>团员</td>
+               </tr>
+               <tr>
+                   <td>李四</td>
+                   <td>女</td>
+                   <td>20</td>
+                   <td>满族</td>
+                   <td>群众</td>
+               </tr>
+               <tr>
+                   <td>王五</td>
+                   <td>男</td>
+                   <td>19</td>
+                   <td>回族</td>
+                   <td>党员</td>
+               </tr>
+               <tr>
+                   <td align="right" valign="top">赵六</td>
+                   <td>女</td>
+                   <td>21</td>
+                   <td>壮族</td>
+                   <td>团员</td>
+               </tr>
+           </tbody>
+           <!-- 表格脚注 -->
+           <tfoot height="50" align="center" valign="middle">
+               <tr>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td>共计: 4人</td>
+               </tr>
+           </tfoot>
+       </table>  
+   ```
+
+   
+
+### 2. 常用属性
+
+| 标签名 | 语义       | 常用属性                                                     | 单/双标签 |
+| ------ | ---------- | ------------------------------------------------------------ | --------- |
+| table  | 表格       | `width`：设置表格宽度。<br />`height`：设置表格最小高度, 表格最终高度可能比设置值大。<br />`border`：设置表格边框宽度。<br />`cellspacing`：设置单元格之间的距离。 | 双        |
+| thead  | 表格头部   | `height`：设置表格头部高度。<br />`align`：设置单元格的水平对齐方式，可选值：left、center、right。<br />`valign`：设置单元格的垂直对齐方式，可选值：top、middle、bottom。 | 双        |
+| tbody  | 表格主体   | 常用属性与thead相同。                                        | 双        |
+| tfoot  | 表格脚注   | 常用属性与thead相同。                                        | 双        |
+| tr     | 行         | 常用属性与thead相同。                                        | 双        |
+| td     | 普通单元格 | `width`：设置单元格宽度。同列所有单元格全都受影响。<br />`height`：设置单元格高度。同行所有单元格全都受影响。<br />`align`：设置单元格的水平对齐方式。<br />`valign`：设置单元格的垂直对齐方式。<br />`rowspan`：指定要跨的行数。<br />`colspan`：指定要跨的列数。 | 双        |
+| th     | 表头单元格 | 常用属性与td相同。                                           | 双        |
+
+>  **注意点**：
+>
+> 1. `<table>` 元素的 `border ` 属性可以控制表格边框，但 `border` 值的大小，并不控制单元格边框的宽度，只能控制表格最外侧边框的宽度，这个问题如何解决？--后期靠 `CSS` 控制。
+> 2. 给某个 `th` 或 `td` 设置了宽度之后，他们所在的那一列的宽度就确定了。
+> 3. 给某个 `th` 或 `td` 设置了高度之后，他们所在的那一行的高度就确定了。
+
+### 3. 跨行跨列
+
+`rowspan`： 指定要跨的行数。
+
+`colspan`： 指定要跨的列数。
+
+
+
+## 11 .常用标签补充
+
+| 标签名 | 标签含义                                   | 单 / 双 标签 |
+| ------ | ------------------------------------------ | ------------ |
+| `br`   | 换行                                       | 单           |
+| `hr`   | 分隔                                       | 单           |
+| `pre`  | 按原文显示（一般用于在页面中嵌入大段代码） | 双           |
+
+> 注意点：
+>
+> 1. 不要用 `<br>`来增加文本之间的行间隔，应使用`<p>`元素，或后面即将学到的`CSS margin` 属性。
+> 2. `<hr>`的语义是分隔，如果不想要语义，只是想画一条水平线，那么应当使用`CSS`完成。
+
+
+
+## 12. 表单
+
+**概念：**一个包含交互的区域，用于收集用户提供的数据。
+
+### 1. 基本结构
+
+| 标签名 | 标签语义 | 常用属性                                                     | 单/双 标签 |
+| ------ | -------- | ------------------------------------------------------------ | ---------- |
+| form   | 表单     | action：用户指定表单的提交地址（需要与后端沟通确定）。<br />target: 用于控制表单提交后，如何打开页面，常用值如下：<br />             \_self: 在本窗口打开.<br />             \_blank: 在新窗口打开.<br />method：用户控制表单的提交方式。 | 双         |
+| input  | 输入框   | type：设置输入框的类型，目前用到的值是`text`，表示普通文本。<br />name：用户指定提交数据的名字。（需要与后端人员沟通确定） | 单         |
+| button | 按钮     |                                                              | 双         |
+
+> 在本小节，我们先记住表单的整体形式，稍后会对表单控件进行详细讲解。
+
+示例代码：
+
+```html
+<form action="https://www.baidu.com/s" target="_blank" method="post">
+    <input type="text" name="word">
+    <button>去百度搜索</button>
+</form>
+
+<form action="https://search.jd.com/search" target="_blank">
+    <input type="text" name="keyword">
+    <button>去京东搜索</button>
+</form>
+```
+
+### 2. 常用表单控件
+
+`name` 属性是为了在传输数据时向后台服务器说明这是什么类型的数据。
+
+**①  文本输入框**
+
+```html
+<input type="text">
+```
+
+常用属性如下：
+
+* name 属性：数据的名称。
+* value 属性：输入框的默认输入值。
+* maxlength 属性：输入框最大可输入长度。
+
+
+
+**②  密码输入框**
+用于隐藏密码，保护用户的隐私和安全
+
+```html
+<input type="password">
+```
+
+常用属性如下：
+
+* name 属性：数据的名称。
+
+* value 属性：输入框的默认输入值（一般不用，无意义）。
+
+* maxlength 属性：输入框最大可输入长度
+
+
+
+**③  单选框**
+
+```html
+<input type="radio" name="sex" value="female">女
+<input type="radio" name="sex" value="male" checked>男
+```
+
+常用属性如下：
+
+* name属性：数据的名称，注意：想要单选效果，多个 radio 的 name 属性值要保持一致。
+* value属性：提交的数据值。
+* checked属性：让该单选按钮默认选中。
+
+> **扩展内容——为什么单选框的type会是radio ? **
+>
+> 尽管 type="radio" 的命名可能让人联想到收音机（radio），但这个名字的来源实际上与早期收音机的设计类似性有关。在早期的收音机中，人们可以通过旋转收音机的调频旋钮来选择不同的广播频道。当调谐到特定频道时，用户只能收听该频道的广播内容，这种选择性类似于单选框的行为，因此 type="radio" 被命名为 “radio”。 在 HTML 中，使用 type="radio" 的输入元素允许用户在一组选项中选择一个选项，就像早期收音机上可以选择一个特定的频道一样。每个单选框都有一个相同的 name 属性，这使得在同一组中只能选择一个选项。用户选择其中一个选项后，其他选项将被取消选择。
+
+
+
+**④  复选框**
+
+```html
+<input type="checkbox" name="hobby" value="smoke">抽烟
+<input type="checkbox" name="hobby" value="drink">喝酒
+<input type="checkbox" name="hobby" value="perm" checked>烫头
+```
+
+常用属性如下：
+
+* name属性：数据的名称。
+* value属性：提交的数据值。
+* checked属性：让该复选框默认选中。
+
+
+
+**⑤  隐藏域**
+隐藏域是一个用户不可见的输入区域，作用是在提交表单时携带一些固定的数据。
+
+```html
+<input type="hidden" name="tag" value="100">
+```
+
+常用属性如下：
+
+* name属性：指定数据的名称。
+* value属性：指定真正提交的数据。
+
+
+
+**⑥  提交按钮**
+
+```html
+<input type="submit" value="点我提交表单">
+<button>点我提交表单</button>
+```
+
+> 注意：
+> <button> 标签的 type 属性的默认值是 submit。
+> <button> 不需要指定 name 属性。
+> <input> 标签编写的按钮，使用 value 属性指定按钮文字。
+
+
+
+**⑦  重置按钮**
+
+```html
+<input type="reset" value="点我重置">
+<button type="reset">点我重置</button>
+```
+
+> 注意点：
+> <button> 不需要指定 name 属性。
+> <input> 标签编写的按钮，使用 value 属性指定按钮文字。
+>
+> <button>默认type就是submit，所以在实现提交按钮时不需要额外修改type，但是实现重置按钮时时需要修改为reset的。
+>
+> 如果使用input，每次都需要写这个type
+>
+> 推荐使用button标签，更加符合语义化开发
+
+
+
+**⑧  普通按钮**
+
+```html
+<input type="button" value="普通按钮">
+```
+
+> 注意点：普通按钮的 type 值为 button，若不写 type 值是 submit 会引起表单的提交。
+>
+> 目前来说，普通按钮按了是没有任何的效果的，需要到后面学习了JavaScript之后才能实现各种不同的功能和交互效果
+
+
+
+**⑨  文本域**
+
+```html
+<textarea name="msg" rows="22" cols="3">我是文本域</textarea>
+```
+
+常用属性如下：
+
+* rows 属性：指定默认显示的行数，会影响文本域的高度。
+* cols 属性：指定默认显示的列数，会影响文本域的宽度。
+* 不能编写 type 属性，其他属性与普通文本输入框一致。
+
+⑩ 下拉框
+```html
+<select name="from">
+    <option value="黑">黑龙江</option>
+    <option value="辽">辽宁</option>
+    <option value="吉">吉林</option>
+    <option value="粤" selected>广东</option>
+</select>
+```
+
+常用属性及注意事项：
+
+* name 属性：指定数据的名称。
+  option 标签设置value 属性， 如果没有value属性，提交的数据是option中间的文字；如果设置了value属性，提交的数据就是value 的值（建议设置 value 属性，因为value需要传递到服务器，中间的文字只是给用户看的）
+* option 标签设置了 selected 属性，表示默认选中。单选复选框默认选中的属性是checked
+
+
+
+### 3. 禁用表单控件
+
+给表单控件的标签设置 disabled 既可禁用表单控件。
+
+>  input、textarea、button、select、option 都可以设置 disabled属性
+
+1)  不恰当的使用：
+
+将男选项设置为默认，且禁用，那点击切换为女之后则无法再切换回去
+
+```html
+性别：
+<input disabled type="radio" name="gender" value="male" checked>男
+<input type="radio" name="gender" value="female">女<br>
+```
+
+2) 把烫头设置为默认，且禁用，那就无法取消勾选了
+
+```html
+<input disabled type="checkbox" name="hobby" value="perm" checked>烫头
+```
+
+> 乍一看这个功能确实没什么用，实际上需要等到学到了JS之后动态地去调整是都禁用表单控件
+
+
+
+### 4. label 标签
+
+label标签可与表单控件相关联，关联之后点击文字，与之对应的表单控件就会获取焦点。
+
+两种与 label 关联方式如下：
+
+1. 给文字套上一个label标签，再将label的for属性的值等于表单控件的id。
+
+```html
+<label for="zhanghu">账户：</label>
+<input id="zhanghu" type="text" name="account" value="李白" maxlength="10"><br>
+```
+
+
+把表单控件套在 label 标签的里面。
+
+```html
+<label>
+    密码：
+    <input type="password" name="pwd" value="123456" maxlength="6"><br>
+</label>
+```
+
+> 第一 种方式可以提供更好的可访问性（对于屏幕阅读器用户），但是会额外增加一些代码量，不够简洁
+
+
+
+### 5. fieldset 与 legend 的使用（了解）
+
+`fieldset` 可以为表单控件分组、`legend` 标签是分组的标题。
+
+示例：
+
+```html
+<fieldset>
+	<legend>主要信息</legend>
+	<label for="zhanghu">账户：</label>
+	<input id="zhanghu" type="text" name="account" maxlength="10"><br>
+	<label>
+		密码：
+		<input id="mima" type="password" name="pwd" maxlength="6">
+	</label>
+	<br>
+	性别：
+	<input type="radio" name="gender" value="male" id="nan">
+    <label for="nan">男</label>
+    <label>
+    	<input type="radio" name="gender" value="female" id="nv">女
+	</label>
+</fieldset>
+```
+
+
+
+### 6. 表单总结
+
+| `标签名`   | `标签语义`       | `常用属性`                                                   | `单/双标签` |
+| ---------- | ---------------- | ------------------------------------------------------------ | ----------- |
+| `form`     | 表单             | `action`: 表单要提交的地址 `target`: 要跳转的新地址打开位置 (`_self` / `_blank`) `method`: 请求方式 (`get` / `post`) | 双          |
+| `input`    | 表单控件         | `type`: 属性：表单控件类型,  可选值：text, password, radio, checkbox, hidden, submit, reset, button等<br/>`name`: 指定数据名称<br/>`value`: 对于输入框，默认输入的值；对于单选和复选框：实际提交的数据；对于按钮，显示文字<br/>`disabled`: 设置表单控件不可用<br/>`maxlength`: 输入框最大可输入长度<br/>`checked`: 对于单选按钮和复选框，默认选中 | 单          |
+| `textarea` | 文本域           | `name`: 数据名称<br />`rows`: 默认显示的行数，影响文本域的高度 <br />`cols`: 默认显示的列数，影响文本域的宽度<br />`disabled`: 设置表单控件不可用 | 双          |
+| `select`   | 下拉框           | `name`: 指定数据名称 <br />`disabled`: 设置整个下拉框不可用  | 双          |
+| `option`   | 下拉框的选项     | `disabled`: 设置选项不可用 <br />`value`: 选项提交的数据（不指定`value`，会把标签中的内容作为提交数据）<br />`selected`: 默认选中 | 双          |
+| `button`   | 按钮             | `disabled`: 设置按钮不可用 <br />`type`: 按钮类型 (`submit` （默认）/ `reset` / `button`) | 双          |
+| `label`    | 与表单控件做关联 | `for`: 要与关联的表单控件的ID值相同                          | 双          |
+| `fieldset` | 表单控件分组     |                                                              | 双          |
+| `legend`   | 分组名称         |                                                              | 双          |
+
+
+
+## 13 .框架标签
+
+| 标签名   | 功能和语义         | 属性                                                         | 单/双标签 |
+| -------- | ------------------ | ------------------------------------------------------------ | --------- |
+| `iframe` | 框架（在网页中嵌入 | `name`: 框架名字，可以与 `target` 属性配合。<br />`width`: 框架的宽。 `height`: 框架的高度。 <br />`frameborder`: 是否显示边框，值：0 或者1。 | 双标签    |
+
+`iframe` 标签的实际应用：
+
+```html
+<!-- 利用iframe嵌入一个普通网页 -->
+    <iframe src="https://www.taobao.com" width="900" height="300" frameborder="1" ></iframe>
+
+<!-- 利用iframe嵌入一个广告网页 -->
+    <iframe width="300" height="300" src="这里输入广告的网址" frameborder="0"></iframe>
+
+<!-- 利用iframe嵌入其他内容 -->
+<iframe src="./resource/如何一夜暴富.pdf" frameborder="0"></iframe>
+
+<!-- 与超链接的target属性配合使用 -->
+<a href="https://www.taobao.com" target="tt">点我看淘宝</a>
+<iframe name="tt" frameborder="0"></iframe>
+
+<!-- 与表单的target属性配合使用 -->
+<form action="https://so.toutiao.com/search" target="container">
+    <input type="text" name="keyword">
+    <input type="submit" value="搜索">
+</form>
+<iframe name="container" frameborder="0"></iframe>
+```
+
+这里详细解释一下最后一条：
+
+1. `<form>`元素是一个表单，用于创建一个可以接受用户输入的区域，以便提交到指定的URL地址。这里的`action`属性指定了表单提交的目标URL为 `https://so.toutiao.com/search`，target属性设置为 `container`，意味着表单提交后的结果将在名为 `container` 的iframe中显示。该属性与iframe的name属性相对应，用于指定目标显示位置。
+
+2. `<input>`元素是表单中的一个输入字段，这里有两个：
+   * 第一个输入字段使用`type="text"`，即文本输入框，`name="keyword"`为输入字段的名称，用于表示用户输入的关键字。
+   * 第二个输入字段使用`type="submit"`，即提交按钮，`value="搜索"`为按钮上显示的文本。
+3. `<iframe>` 元素用于在页面中嵌入其他文档或内容，这里的 `name` 属性设置为 `container`，与表单的 `target` 属性相对应。这意味着当表单提交后，搜索结果会在这个名为  `container`  的 `iframe` 中显示。`frameborder="0"`用于取消 `iframe` 的边框。
+
+## 14. HTML实体
+
+在HTML中我们可以用一种 特殊的形式 的内容，来表示某个符号 ，这种特殊形式的内容，就是HTML实体。比如小于号<用于定义 HTML 标签的开始。如果我们希望浏览器正确地显示这些字符，我们必须在HTML 源码中插入字符实体。
+
+> 字符实体 由三部分组成：一个 & 和 一个实体名称（或者一个# 和 一个实体编号），最后加上一个分号 ; 。
+
+常见字符实体总结：
+
+| 描述              | 实体名称 | 实体编号 | Unicode 字符 |
+| ----------------- | -------- | -------- | ------------ |
+| 小于号            | `<`      | `<`      | `<`          |
+| 大于号            | `>`      | `>`      | `>`          |
+| 和号              | `&`      | `&`      | `&`          |
+| 引号              | `"`      | `"`      | `"`          |
+| 反引号            | `´`      | `´`      | `´`          |
+| 分（cent）        | `¢`      | `¢`      | `¢`          |
+| 镑（pound）       | `£`      | `£`      | `£`          |
+| 元（yen）         | `¥`      | `¥`      | `¥`          |
+| 欧元（euro）      | `€`      | `€`      | `€`          |
+| 版权（copyright） | `©`      | `©`      | `©`          |
+| 注册商标          | `®`      | `®`      | `®`          |
+| 商标              | `™`      | `™`      | `™`          |
+| 乘号              | `×`      | `×`      | `×`          |
+| 除号              | `÷`      | `÷`      | `÷`          |
+
+完整实体列表，请参考： [HTML Standard (whatwg.org)](https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references)
+
+### 15.HTML全局属性
+
+常用的全局属性：
+
+| 属性名  | 含义                                                         |
+| ------- | ------------------------------------------------------------ |
+| `id`    | 给标签指定唯一标识，<br />注意：`id`是不能重复的。 <br />作用：可以让`label`标签与表单控件相关联；也可以与`CSS`、`JavaScript`配合使用。 |
+| `class` | 给标签指定类名，随后通过CSS就可以给标签设置样式。            |
+| `style` | 给标签设置`CSS`样式。                                        |
+| `dir`   | 内容的方向，值：`ltr`、`rtl`                                 |
+| `title` | 给标签设置一个文字提示，一般超链接和图片用得比较多。         |
+| `lang`  | 给标签指定语言，具体规范和可选值请参考【10. HTML 设置语言】。 |
+
+完整的全局属性，请参考：[全局属性 - HTML（超文本标记语言） | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes)
+
+## 16.meta 元信息
+
+1. 配置字符编码：
+
+```html
+<meta charset="utf-8">
+```
+
+2. 针对 `IE` 浏览器的兼容性配置：
+
+```html
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+```
+
+3. 针对移动端的配置（移动端课程中会详细讲解）：
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+4. 配置网页关键字：
+
+```html
+<meta name="keywords" content="8-12个以英文逗号隔开的单词/词语">
+```
+
+5. 配置网页描述信息：
+
+```html
+<meta name="description" content="80字以内的一段话，与网站内容相关">
+```
+
+6. 针对搜索引擎爬虫配置：
+
+```html
+<meta name="robots" content="此处可选值见下表">
+```
+
+| 值          | 描述                               |
+| ----------- | ---------------------------------- |
+| `index`     | 允许搜索爬虫索引此页面。           |
+| `noindex`   | 要求搜索爬虫不索引此页面。         |
+| `follow`    | 允许搜索爬虫跟随此页面上的链接。   |
+| `nofollow`  | 要求搜索爬虫不跟随此页面上的链接。 |
+| `all`       | 与 `index`, `follow` 等价。        |
+| `none`      | 与 `noindex`, `nofollow` 等价。    |
+| `noarchive` | 要求搜索引擎不缓存页面内容。       |
+| `nocache`   | `noarchive` 的替代名称。           |
+
+7. 配置网页作者：
+
+```html
+<meta name="author" content="作者名">
+```
+
+8. 配置网页生成工具：
+
+```html
+<meta name="generator" content="工具名">
+```
+
+9. 配置定义网页版权信息：
+
+```html
+<meta name="copyright" content="版权信息">
+```
+
+10. 配置网页自动刷新：
+
+```html
+<meta http-equiv="refresh" content="秒数;url=网址">
+```
+
+完整的网页元信息，请参考：[文档级元数据元素 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta)
+
+
+
+## 17. HTML总结
+
+![](https://i-blog.csdnimg.cn/blog_migrate/dcec628862b60e9350b932a15ea72b3e.png)
