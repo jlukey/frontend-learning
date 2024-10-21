@@ -310,7 +310,7 @@ visibility 属性默认值是show， 如果设置为 hidden，元素会隐藏。
 
 **练习一：**
 
-<img src="https://cdn.jsdelivr.net/gh/jlukey/image@main/img/image-20241022001120808.png" alt="image-20241022001120808" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/jlukey/image@main/img/image-20241022001120808.png" alt="image-20241022001120808" style="zoom:25%;" />
 
 ```html
 <!DOCTYPE html>
@@ -346,7 +346,7 @@ visibility 属性默认值是show， 如果设置为 hidden，元素会隐藏。
 
 **练习二：**
 
-<img src="https://cdn.jsdelivr.net/gh/jlukey/image@main/img/image-20241022001023570.png" alt="image-20241022001023570" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/jlukey/image@main/img/image-20241022001023570.png" alt="image-20241022001023570" style="zoom:25%;" />
 
 ```html
 <!DOCTYPE html>
@@ -378,7 +378,7 @@ visibility 属性默认值是show， 如果设置为 hidden，元素会隐藏。
 
 **练习三：**
 
-<img src="https://cdn.jsdelivr.net/gh/jlukey/image@main/img/image-20241022002403812.png" alt="image-20241022002403812" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/jlukey/image@main/img/image-20241022002403812.png" alt="image-20241022002403812" style="zoom:25%;" />
 
 ```html
 <!DOCTYPE html>
