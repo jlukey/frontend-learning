@@ -251,21 +251,180 @@ visibility 属性默认值是show， 如果设置为 hidden，元素会隐藏。
 
 <br/>
 
+# 14. 样式的继承
 
+有些样式会继承，元素如果本身设置了某个样式，就使用本身设置的样式，但如果本身没有设置某个样式，会从父元素开始一级一级继承（优先继承离得近的祖先元素）。
 
+**会继承的 CSS 属性：**
 
+​		字体属性、文本属性（除了 vertical-align）、文字颜色 等。
 
+**不会继承的 CSS 属性：**
 
+​		边框、背景、内边距、外边距、宽高、溢出方式 等。
 
+> 一个规律：能继承的属性，都是不影响布局的，简单说：都是和盒子模型没关系的。
 
+<br/>
 
+![image-20241021233554086](https://cdn.jsdelivr.net/gh/jlukey/image@main/img/image-20241021233554086.png)
 
+<br/>
 
+# 15. 元素的默认样式
 
+元素一般都有一些默认的样式，例如：
 
+1. `<a>` 元素：下划线、字体颜色、鼠标小手。
+2. `<h1>` ~ `<h6>` 元素：文字加粗、文字大小、上下外边距。
+3. `p` 元素：上下外边距。
+4. `ul`、`<ol>` 元素：左内边距。
+5. `body` 元素： 8px 外边距（4个方向）。
+6. ......
 
+**优先级**： 元素的默认样式 > 继承的样式，所以如果要重置元素的默认样式，选择器一定要直接选择到该元素。<br/>
 
+# 16. 布局小技巧
 
+1. 行内元素、行内块元素，可以被父元素当做文本处理。
 
+   > 可以像处理文本对齐一样，去处理：行内、行内块在父元素中的对齐。
+   >
+   > 例如：`text-aligin`、`line-height`、`text-indent` 等。
 
+2. 如何让子元素，在父元素中 **水平居中**：
 
+   * 若子元素为块元素，给子元素加上：`margin：0 auto;`。
+
+   * 若子元素为行内元素，行内块元素，给父元素加上：`text-align：center;`。
+
+3. 如何让子元素，在父元素中 **垂直居中**：
+
+   * 若子元素为块元素，给子元素加上：`margin-top`，值为: （父元素 content - 子元素盒子总高）/ 2 。
+
+   * 若子元素为行内元素、行内块元素：
+
+     * 让父元素的 `height` = `line-height`，每个子元素都加上：`vertical-align: middle;`。
+
+     * 若想绝对垂直居中，父元素 `font-size` 设置为 0。
+
+**练习一：**
+
+<img src="https://cdn.jsdelivr.net/gh/jlukey/image@main/img/image-20241022001120808.png" alt="image-20241022001120808" style="zoom:50%;" />
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test2</title>
+    <style>
+        #d1{
+            width: 400px;
+            height: 400px;
+            background-color: gray;
+            overflow: hidden;
+        }
+        #d2{
+            width: 200px;
+            height: 100px;
+            background-color: orange;
+            margin: 0 auto;
+            margin-top: 150px;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id = "d1">
+        <div id  = "d2">inner</div>
+    </div>
+</body>
+</html>
+```
+
+**练习二：**
+
+<img src="https://cdn.jsdelivr.net/gh/jlukey/image@main/img/image-20241022001023570.png" alt="image-20241022001023570" style="zoom:50%;" />
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test3</title>
+    <style>
+        #d1{
+            width: 400px;
+            height: 400px;
+            background-color: gray;
+            text-align: center;
+            line-height: 400px;
+        }
+        span{
+            font-size: 20px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div id = "d1">
+        <span>中华民族</span>
+    </div>
+</body>
+</html>
+```
+
+**练习三：**
+
+<img src="https://cdn.jsdelivr.net/gh/jlukey/image@main/img/image-20241022002403812.png" alt="image-20241022002403812" style="zoom:50%;" />
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test4</title>
+    <style>
+        #d1{
+            width: 400px;
+            height: 400px;
+            background-color: gray;
+            text-align: center;
+            line-height: 400px;
+            font-size: 0px;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+            vertical-align: middle;
+        }
+        span{
+            font-size: 30px;
+            background-color: orange;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div id = "d1">
+        <span>谢谢老板！</span>
+        <img src="./image/谢谢老板.jpg" alt="">
+    </div>
+</body>
+</html>
+```
+
+<br/>
+
+# 17. 元素之间的空白问题
+
+**产生的原因:**
+
+​		行内元素、行内块元素、彼此之间的换行会被浏览器解析为一个空白字符。
+
+**解决方案：**
+
+		1. 去掉换行和空格（不推荐）。
+		1. 给父元素设置 `font-size: 0`，在给需要显示文字的元素，单独设置字体大小（推荐）。
